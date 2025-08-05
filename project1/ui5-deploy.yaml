@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "3.1"
+metadata:
+  name: project1
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: http://192.168.10.66:8000
+          client: '200'
+        app:
+          name: ZTEST_PROJECT2
+          description: test 2 fiori application using CDS and annotaions
+          package: ZYE_CDS_PACKAGE
+          transport: ADEK904562
+        exclude:
+          - /test/
